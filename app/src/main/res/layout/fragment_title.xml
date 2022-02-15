@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <androidx.constraintlayout.motion.widget.MotionLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layoutDescription="@xml/fragment_title_scene">
+
+        <ImageView
+            android:id="@+id/pingu"
+            android:layout_width="105dp"
+            android:layout_height="129dp"
+            android:layout_marginEnd="204dp"
+            android:layout_marginBottom="64dp"
+            android:src="@drawable/painter_penguin"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <TextView
+            android:id="@+id/clickOnMe"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="¡Pulsa sobre mi!"
+            tools:layout_editor_absoluteX="176dp"
+            tools:layout_editor_absoluteY="546dp" />
+
+        <ImageView
+            android:id="@+id/paint"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/paint_"
+            tools:layout_editor_absoluteX="141dp"
+            tools:layout_editor_absoluteY="272dp" />
+
+        <Button
+            android:id="@+id/button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Crear"
+            tools:layout_editor_absoluteX="161dp"
+            tools:layout_editor_absoluteY="399dp" />
+
+    </androidx.constraintlayout.motion.widget.MotionLayout>
+</layout>

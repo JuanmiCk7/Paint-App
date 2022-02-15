@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="741dp"
+        android:background="#8F8F8F"
+        tools:context="com.example.paintfinal.DrawingFragment">
+
+        <ImageButton
+            android:id="@+id/pencil"
+            android:layout_width="47dp"
+            android:layout_height="49dp"
+            android:layout_marginTop="16dp"
+            app:layout_constraintEnd_toStartOf="@+id/square"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_baseline_brush_24" />
+
+        <ImageButton
+            android:id="@+id/square"
+            android:layout_width="47dp"
+            android:layout_height="49dp"
+            android:layout_marginTop="16dp"
+            app:layout_constraintEnd_toStartOf="@+id/circle"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/pencil"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_baseline_crop_square_24" />
+
+        <ImageButton
+            android:id="@+id/circle"
+            android:layout_width="47dp"
+            android:layout_height="49dp"
+            android:layout_marginTop="16dp"
+            app:layout_constraintEnd_toStartOf="@+id/fill"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/square"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_outline_circle_24" />
+
+        <ImageButton
+            android:id="@+id/fill"
+            android:layout_width="47dp"
+            android:layout_height="49dp"
+            android:layout_marginTop="16dp"
+            app:layout_constraintEnd_toStartOf="@+id/cleanButton"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/circle"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_baseline_format_color_fill_24" />
+
+        <ImageButton
+            android:id="@+id/cleanButton"
+            android:layout_width="47dp"
+            android:layout_height="49dp"
+            android:layout_marginTop="16dp"
+            app:layout_constraintEnd_toStartOf="@+id/undo"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/fill"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_baseline_cleaning_services_24" />
+
+        <ImageButton
+            android:id="@+id/undo"
+            android:layout_width="47dp"
+            android:layout_height="49dp"
+            android:layout_marginTop="16dp"
+            app:layout_constraintEnd_toStartOf="@+id/redo"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/cleanButton"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_baseline_undo_24" />
+
+        <ImageButton
+            android:id="@+id/redo"
+            android:layout_width="47dp"
+            android:layout_height="49dp"
+            android:layout_marginTop="16dp"
+            app:layout_constraintEnd_toStartOf="@+id/colors"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/undo"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_baseline_redo_24" />
+
+        <ImageButton
+            android:id="@+id/colors"
+            android:layout_width="47dp"
+            android:layout_height="49dp"
+            android:layout_marginTop="16dp"
+            android:backgroundTint="@color/purple_200"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/redo"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_baseline_brush_24" />
+
+        <com.example.paintfinal.drawing.Lienzo
+            android:id="@+id/lienzo"
+            android:layout_width="411dp"
+            android:layout_height="599dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <SeekBar
+            android:id="@+id/strokeBar"
+            android:layout_width="102dp"
+            android:layout_height="25dp"
+            android:layout_marginTop="25dp"
+            android:min="10"
+            android:max="220"
+            app:layout_constraintEnd_toStartOf="@+id/textView2"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/textView"
+            app:layout_constraintTop_toBottomOf="@+id/square" />
+
+        <CheckBox
+            android:id="@+id/fillCheck"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="14dp"
+            android:text="Relleno"
+            app:layout_constraintEnd_toStartOf="@+id/clean"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/textView2"
+            app:layout_constraintTop_toBottomOf="@+id/fill" />
+
+        <Button
+            android:id="@+id/clean"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="14dp"
+            android:text="Limpiar"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/fillCheck"
+            app:layout_constraintTop_toBottomOf="@+id/redo" />
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="11dp"
+            android:layout_height="16dp"
+            android:layout_marginTop="28dp"
+            android:text="10"
+            app:layout_constraintEnd_toStartOf="@+id/strokeBar"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/pencil" />
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="27dp"
+            android:text="220"
+            app:layout_constraintEnd_toStartOf="@+id/fillCheck"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/strokeBar"
+            app:layout_constraintTop_toBottomOf="@+id/fill" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
