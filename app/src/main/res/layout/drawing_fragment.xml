@@ -5,8 +5,8 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="741dp"
-        android:background="#8F8F8F"
+        android:layout_height="838dp"
+        android:background="#41AFEA"
         tools:context="com.example.paintfinal.DrawingFragment">
 
         <ImageButton
@@ -100,11 +100,11 @@
 
         <com.example.paintfinal.drawing.Lienzo
             android:id="@+id/lienzo"
-            android:layout_width="411dp"
-            android:layout_height="599dp"
+            android:layout_width="485dp"
+            android:layout_height="700dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintHorizontal_bias="0.093"
             app:layout_constraintStart_toStartOf="parent" />
 
         <SeekBar
@@ -112,8 +112,8 @@
             android:layout_width="102dp"
             android:layout_height="25dp"
             android:layout_marginTop="25dp"
-            android:min="10"
             android:max="220"
+            android:min="10"
             app:layout_constraintEnd_toStartOf="@+id/textView2"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toEndOf="@+id/textView"

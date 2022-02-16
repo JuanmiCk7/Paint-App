@@ -41,6 +41,7 @@ class Lienzo @JvmOverloads constructor(
         strokeWidth = STROKE_WIDTH // default: Hairline-width (really thin)
     }
     private var mode = 1
+    private var toleranceUp = false
     private var fill = false
     private var path = Path()
     private var drawInfo = DrawInfo(path,paint)
@@ -93,12 +94,12 @@ class Lienzo @JvmOverloads constructor(
     }
 
     private fun touchUp() {
-        //Hacemos un constructor para guardar el objeto y no la referencia, porque la referencia la estamos reseteando.
-        drawInfo.path = Path(path)
-        drawInfo.paint = Paint(paint)
-        drawing.add(DrawInfo(drawInfo.path, drawInfo.paint))
-        drawingRecycler.clear()
-        path.reset()
+            //Hacemos un constructor para guardar el objeto y no la referencia, porque la referencia la estamos reseteando.
+            drawInfo.path = Path(path)
+            drawInfo.paint = Paint(paint)
+            drawing.add(DrawInfo(drawInfo.path, drawInfo.paint))
+            drawingRecycler.clear()
+            path.reset()
     }
 
     private fun touchMove() {
@@ -170,7 +171,6 @@ class Lienzo @JvmOverloads constructor(
     }
 
     private fun touchStart() {
-        //path.reset()
         path.moveTo(motionTouchEventX, motionTouchEventY)
         currentX = motionTouchEventX
         currentY = motionTouchEventY

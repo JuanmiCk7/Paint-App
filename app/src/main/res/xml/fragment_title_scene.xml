@@ -4,44 +4,244 @@
     xmlns:motion="http://schemas.android.com/apk/res-auto">
 
 
-    <ConstraintSet android:id="@+id/start" >
+    <ConstraintSet android:id="@+id/initial" >
         <Constraint
-            android:layout_height="wrap_content"
-            android:layout_width="wrap_content"
-            android:id="@+id/clickOnMe"
+            android:id="@+id/button"
             motion:layout_constraintEnd_toEndOf="parent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="56dp"
+            motion:layout_constraintBottom_toTopOf="@+id/clickOnMe"
+            android:layout_marginEnd="160dp"
+            android:visibility="invisible" />
+        <Constraint
+            motion:layout_editor_absoluteY="362dp"
+            motion:layout_constraintEnd_toEndOf="parent"
+            android:id="@+id/imageView"
+            motion:layout_constraintStart_toStartOf="parent" />
+    </ConstraintSet>
+    <ConstraintSet android:id="@+id/empty" >
+        <Constraint
+            android:id="@+id/button"
+            motion:layout_constraintEnd_toEndOf="parent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="56dp"
+            motion:layout_constraintBottom_toTopOf="@+id/clickOnMe"
+            android:layout_marginEnd="160dp"
+            android:visibility="invisible" />
+    </ConstraintSet>
+    <Transition
+        motion:constraintSetStart="@+id/initial"
+        motion:constraintSetEnd="@+id/empty"
+        motion:autoTransition="none"
+        motion:duration="350">
+        <OnClick motion:targetId="@+id/pingu" />
+    </Transition>
+    <ConstraintSet
+        android:id="@+id/first_half"
+        motion:deriveConstraintsFrom="@+id/empty" >
+        <Constraint
+            android:layout_marginEnd="100dp"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="100dp"
+            android:layout_marginBottom="16dp"
+            motion:layout_constraintBottom_toTopOf="@+id/button"
+            motion:layout_constraintEnd_toEndOf="parent"
+            android:layout_width="wrap_content"
+            android:id="@+id/paint" />
+        <Constraint
+            android:layout_marginEnd="236dp"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="236dp"
+            android:layout_marginBottom="48dp"
+            motion:layout_constraintBottom_toTopOf="@+id/clickOnMe"
+            motion:layout_constraintEnd_toEndOf="parent"
+            android:layout_width="wrap_content"
+            android:id="@+id/button"
+            android:visibility="invisible" />
+        <Constraint
+            android:layout_marginEnd="32dp"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="32dp"
+            android:layout_marginBottom="112dp"
             motion:layout_constraintBottom_toTopOf="@+id/pingu"
-            motion:layout_constraintStart_toStartOf="parent"
-            motion:layout_editor_absoluteX="176dp"
-            motion:layout_constraintTop_toBottomOf="@+id/button" />
+            motion:layout_constraintEnd_toEndOf="parent"
+            android:layout_width="wrap_content"
+            android:id="@+id/clickOnMe" />
+        <Constraint
+            android:layout_marginEnd="248dp"
+            android:layout_height="129dp"
+            android:layout_marginRight="248dp"
+            android:layout_marginBottom="204dp"
+            motion:layout_constraintBottom_toBottomOf="parent"
+            motion:layout_constraintEnd_toEndOf="parent"
+            android:layout_width="105dp"
+            android:id="@+id/pingu"
+            android:rotationX="7"
+            android:rotationY="-46"
+            android:rotation="21" />
+    </ConstraintSet>
+    <Transition
+        motion:constraintSetStart="@+id/empty"
+        motion:constraintSetEnd="@+id/first_half"
+        motion:autoTransition="animateToEnd"
+        motion:duration="1000" />
+    <ConstraintSet
+        android:id="@+id/second_half"
+        motion:deriveConstraintsFrom="@+id/first_half" >
         <Constraint
             android:layout_marginEnd="152dp"
             android:layout_height="129dp"
             android:layout_marginRight="152dp"
-            android:layout_marginBottom="44dp"
+            android:layout_marginBottom="148dp"
             motion:layout_constraintBottom_toBottomOf="parent"
             motion:layout_constraintEnd_toEndOf="parent"
             android:layout_width="105dp"
             android:id="@+id/pingu" />
         <Constraint
+            android:layout_marginEnd="160dp"
             android:layout_height="wrap_content"
-            android:layout_width="wrap_content"
-            android:id="@+id/paint"
+            android:layout_marginRight="160dp"
             motion:layout_constraintEnd_toEndOf="parent"
-            motion:layout_constraintBottom_toTopOf="@+id/button"
-            motion:layout_constraintTop_toTopOf="parent"
-            motion:layout_editor_absoluteY="272dp"
-            motion:layout_constraintStart_toStartOf="parent" />
-        <Constraint
-            android:layout_height="wrap_content"
-            motion:layout_editor_absoluteX="161dp"
-            motion:layout_constraintBottom_toTopOf="@+id/clickOnMe"
             android:layout_width="wrap_content"
             android:id="@+id/button"
-            motion:layout_constraintTop_toTopOf="parent" />
+            motion:layout_constraintBottom_toTopOf="@+id/clickOnMe" />
+        <Constraint
+            android:layout_marginEnd="32dp"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="32dp"
+            android:layout_marginBottom="20dp"
+            motion:layout_constraintBottom_toTopOf="@+id/pingu"
+            motion:layout_constraintEnd_toEndOf="parent"
+            android:layout_width="wrap_content"
+            android:id="@+id/clickOnMe" />
+        <Constraint
+            android:layout_marginEnd="16dp"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="16dp"
+            motion:layout_constraintBottom_toTopOf="@+id/button"
+            motion:layout_constraintEnd_toEndOf="parent"
+            android:layout_width="wrap_content"
+            android:id="@+id/paint"
+            android:layout_marginBottom="52dp" />
+        <Constraint
+            android:id="@+id/pingu"
+            motion:layout_constraintEnd_toEndOf="parent"
+            android:layout_height="129dp"
+            android:layout_width="105dp"
+            motion:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginBottom="148dp"
+            android:layout_marginEnd="152dp"
+            android:layout_marginRight="152dp"
+            android:rotationX="95" />
+        <Constraint
+            android:id="@+id/pingu"
+            motion:layout_constraintEnd_toEndOf="parent"
+            android:layout_height="129dp"
+            android:layout_width="105dp"
+            motion:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginBottom="148dp"
+            android:layout_marginEnd="152dp"
+            android:layout_marginRight="152dp"
+            android:rotationX="72" />
+        <Constraint
+            android:id="@+id/pingu"
+            motion:layout_constraintEnd_toEndOf="parent"
+            android:layout_height="129dp"
+            android:layout_width="105dp"
+            motion:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginBottom="148dp"
+            android:layout_marginEnd="152dp"
+            android:layout_marginRight="152dp"
+            android:rotationY="48" />
+        <Constraint
+            android:id="@+id/pingu"
+            motion:layout_constraintEnd_toEndOf="parent"
+            android:layout_height="129dp"
+            android:layout_width="105dp"
+            motion:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginBottom="148dp"
+            android:layout_marginEnd="152dp"
+            android:layout_marginRight="152dp"
+            android:rotationY="44" />
+        <Constraint
+            android:id="@+id/pingu"
+            motion:layout_constraintEnd_toEndOf="parent"
+            android:layout_height="129dp"
+            android:layout_width="105dp"
+            motion:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginBottom="148dp"
+            android:layout_marginEnd="152dp"
+            android:layout_marginRight="152dp"
+            android:rotation="-58" />
+        <Constraint
+            android:id="@+id/clickOnMe"
+            motion:layout_constraintEnd_toEndOf="parent"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:layout_marginBottom="20dp"
+            motion:layout_constraintBottom_toTopOf="@+id/pingu"
+            android:layout_marginEnd="32dp"
+            android:layout_marginRight="32dp"
+            android:visibility="invisible" />
+        <Constraint
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:id="@+id/imageView"
+            motion:layout_constraintEnd_toEndOf="parent"
+            motion:layout_constraintBottom_toBottomOf="parent"
+            motion:layout_constraintTop_toTopOf="parent"
+            motion:layout_editor_absoluteX="226dp"
+            motion:layout_editor_absoluteY="246dp" />
+        <Constraint
+            android:id="@+id/paint"
+            motion:layout_constraintEnd_toEndOf="parent"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:layout_marginBottom="52dp"
+            motion:layout_constraintBottom_toTopOf="@+id/button"
+            android:layout_marginEnd="16dp"
+            android:layout_marginRight="16dp"
+            android:rotation="33" />
     </ConstraintSet>
-    <ConstraintSet android:id="@+id/end" />
     <Transition
-        motion:constraintSetStart="@+id/start"
-        motion:constraintSetEnd="@+id/end" />
+        motion:constraintSetStart="@+id/first_half"
+        motion:constraintSetEnd="@+id/second_half"
+        motion:autoTransition="animateToEnd"
+        motion:duration="1000" />
+    <ConstraintSet
+        android:id="@+id/third_half"
+        motion:deriveConstraintsFrom="@+id/second_half" >
+        <Constraint
+            android:id="@+id/paint"
+            motion:layout_constraintEnd_toEndOf="parent"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            motion:layout_constraintBottom_toTopOf="@+id/button"
+            android:layout_marginBottom="52dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginRight="16dp"
+            android:rotation="-33" />
+        <Constraint
+            android:id="@+id/pingu"
+            motion:layout_constraintEnd_toEndOf="parent"
+            android:layout_height="129dp"
+            android:layout_width="105dp"
+            motion:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginBottom="148dp"
+            android:layout_marginEnd="152dp"
+            android:layout_marginRight="152dp"
+            android:rotation="46" />
+    </ConstraintSet>
+    <Transition
+        motion:constraintSetStart="@+id/second_half"
+        motion:constraintSetEnd="@+id/third_half"
+        motion:autoTransition="animateToEnd"
+        motion:duration="1000" />
+    <Transition
+        motion:constraintSetStart="@+id/third_half"
+        motion:constraintSetEnd="@+id/second_half"
+        motion:autoTransition="animateToEnd"
+        motion:duration="1000" />
 </MotionScene>

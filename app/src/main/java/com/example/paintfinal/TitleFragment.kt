@@ -7,7 +7,6 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.findNavController
-import com.example.paintfinal.databinding.DrawingFragmentBinding
 import com.example.paintfinal.databinding.FragmentTitleBinding
 
 class TitleFragment : Fragment() {

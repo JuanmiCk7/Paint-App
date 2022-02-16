@@ -12,8 +12,8 @@
             android:id="@+id/pingu"
             android:layout_width="105dp"
             android:layout_height="129dp"
-            android:layout_marginEnd="204dp"
-            android:layout_marginBottom="64dp"
+            android:layout_marginEnd="152dp"
+            android:layout_marginBottom="40dp"
             android:src="@drawable/painter_penguin"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent" />
@@ -22,25 +22,33 @@
             android:id="@+id/clickOnMe"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginEnd="156dp"
+            android:layout_marginBottom="28dp"
             android:text="¡Pulsa sobre mi!"
-            tools:layout_editor_absoluteX="176dp"
-            tools:layout_editor_absoluteY="546dp" />
+            app:layout_constraintBottom_toTopOf="@+id/pingu"
+            app:layout_constraintEnd_toEndOf="parent" />
 
         <ImageView
             android:id="@+id/paint"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/paint_"
-            tools:layout_editor_absoluteX="141dp"
-            tools:layout_editor_absoluteY="272dp" />
+            android:layout_marginEnd="20dp"
+            android:layout_marginBottom="68dp"
+            android:src="@drawable/paintart"
+            app:layout_constraintBottom_toTopOf="@+id/button"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:srcCompat="@drawable/paintart"
+            tools:srcCompat="@drawable/paintart" />
 
         <Button
             android:id="@+id/button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginEnd="160dp"
+            android:layout_marginBottom="56dp"
             android:text="Crear"
-            tools:layout_editor_absoluteX="161dp"
-            tools:layout_editor_absoluteY="399dp" />
+            app:layout_constraintBottom_toTopOf="@+id/clickOnMe"
+            app:layout_constraintEnd_toEndOf="parent" />
 
     </androidx.constraintlayout.motion.widget.MotionLayout>
 </layout>
