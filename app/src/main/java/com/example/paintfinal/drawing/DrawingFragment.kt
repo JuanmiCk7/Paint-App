@@ -93,6 +93,10 @@ class DrawingFragment : Fragment() {
                 //  callback for picked color (required)
                 .onColorSelected { color: Int ->
                     binding.lienzo.bgColor = color
+                    if(binding.lienzo.isCleaner) {
+                        binding.lienzo.setColor(color)
+                    }
+                    binding.lienzo.onResetBackgroundColor()
                     binding.lienzo.invalidate()
                 }
 
@@ -103,15 +107,19 @@ class DrawingFragment : Fragment() {
         }
 
         binding.square.setOnClickListener {
+            binding.lienzo.paint.color = binding.lienzo.auxColor
+            binding.lienzo.isCleaner = false
             binding.lienzo.setMode(MODE_SQUARE)
         }
 
         binding.circle.setOnClickListener {
+            binding.lienzo.paint.color = binding.lienzo.auxColor
+            binding.lienzo.isCleaner = false
             binding.lienzo.setMode(MODE_CIRCLE)
         }
 
         binding.fillCheck.setOnClickListener {
-            if(binding.fillCheck.isChecked) {
+            if (binding.fillCheck.isChecked) {
                 binding.lienzo.setFill(true)
             } else {
                 binding.lienzo.setFill(false)
@@ -119,11 +127,13 @@ class DrawingFragment : Fragment() {
         }
 
         binding.pencil.setOnClickListener {
+            binding.lienzo.paint.color = binding.lienzo.auxColor
+            binding.lienzo.isCleaner = false
             binding.lienzo.setMode(MODE_PENCIL)
-            binding.lienzo.setDefaultColor()
         }
 
         binding.cleanButton.setOnClickListener {
+            binding.lienzo.isCleaner = true
             binding.lienzo.setColor(binding.lienzo.bgColor)
         }
 

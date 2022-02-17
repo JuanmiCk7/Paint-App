@@ -22,13 +22,14 @@ class Lienzo @JvmOverloads constructor(
 
 
     //el background que coja el color que hemos creado inicialmente en colors.xml
-    var bgColor = ResourcesCompat.getColor(resources, R.color.colorBackground, null)
+    var bgColor = ResourcesCompat.getColor(resources, R.color.white, null)
 
     companion object {
         private const val STROKE_WIDTH = 12f
     }
 
-    data class DrawInfo(var path: Path, var paint: Paint)
+    data class DrawInfo(var path: Path, var paint: Paint, var isCleaner: Boolean)
+
 
     var paint = Paint().apply {
         color = ResourcesCompat.getColor(resources, R.color.colorPaint, null)
@@ -40,11 +41,13 @@ class Lienzo @JvmOverloads constructor(
         strokeCap = Paint.Cap.ROUND // default: BUTT
         strokeWidth = STROKE_WIDTH // default: Hairline-width (really thin)
     }
+
+    var auxColor: Int = ResourcesCompat.getColor(resources, R.color.colorPaint, null)
     private var mode = 1
-    private var toleranceUp = false
     private var fill = false
     private var path = Path()
-    private var drawInfo = DrawInfo(path,paint)
+    var isCleaner = false
+    private var drawInfo = DrawInfo(path,paint,isCleaner)
     var drawing : MutableList<DrawInfo> = mutableListOf<DrawInfo>()
     var drawingRecycler : MutableList<DrawInfo> = mutableListOf<DrawInfo>()
 
@@ -69,6 +72,9 @@ class Lienzo @JvmOverloads constructor(
         canvas.drawColor(bgColor)
         //recorremos la lista de drawing y pintamos
         for (pathT in drawing){
+            if(pathT.isCleaner) {
+                pathT.paint.color = bgColor
+            }
             canvas.drawPath(pathT.path, pathT.paint)
         }
         if (fill && mode != 1) {
@@ -97,7 +103,7 @@ class Lienzo @JvmOverloads constructor(
             //Hacemos un constructor para guardar el objeto y no la referencia, porque la referencia la estamos reseteando.
             drawInfo.path = Path(path)
             drawInfo.paint = Paint(paint)
-            drawing.add(DrawInfo(drawInfo.path, drawInfo.paint))
+            drawing.add(DrawInfo(drawInfo.path, drawInfo.paint, isCleaner))
             drawingRecycler.clear()
             path.reset()
     }
@@ -198,20 +204,12 @@ class Lienzo @JvmOverloads constructor(
     }
 
     fun setColor(paintColor: Int) {
-        paint.color = paintColor
-    }
-
-    fun setDefaultColor() {
-        paint = Paint().apply {
-            color = ResourcesCompat.getColor(resources, R.color.colorPaint, null)
-            //suavizar curvas
-            isAntiAlias = true
-            isDither = true
-            style = Paint.Style.STROKE // default: FILL
-            strokeJoin = Paint.Join.ROUND // default: MITER
-            strokeCap = Paint.Cap.ROUND // default: BUTT
-            strokeWidth = STROKE_WIDTH // default: Hairline-width (really thin)
+        for(pathT in drawing) {
+            if(!pathT.isCleaner) {
+                auxColor = pathT.paint.color
+            }
         }
+        paint.color = paintColor
     }
 
     fun setMode(mode: Int) {
@@ -220,6 +218,14 @@ class Lienzo @JvmOverloads constructor(
 
     fun setFill(fill: Boolean) {
         this.fill = fill
+    }
+
+    fun onResetBackgroundColor() {
+        for (pathT in drawing) {
+            if (pathT.isCleaner) {
+                pathT.paint.color = bgColor
+            }
+        }
     }
 
 
